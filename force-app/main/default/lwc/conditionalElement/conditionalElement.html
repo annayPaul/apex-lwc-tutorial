@@ -1,0 +1,11 @@
+<template>
+    <lightning-card variant="Narrow" title="Conditional Rendering" icon-name="standard:account">
+        <lightning-input type="checkbox" label="Show" name="show" onchange={handleChange}></lightning-input>
+        <template lwc:if={show}>
+            <p>Hello, {myValue}!</p>
+        </template>
+        <template lwc:else>
+            Loading...
+        </template>
+    </lightning-card>
+</template>
