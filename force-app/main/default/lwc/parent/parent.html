@@ -1,9 +1,11 @@
 <template>
-    <lightning-card title="I am parent with API property" icon-name="utitlity:user">
+    <lightning-card title="PARENT (API Function)" icon-name="utitlity:user">
         <div class="slds-var-m-around_medium">
-            <lightning-input type="number" value={percentage} onchange={handleChange}></lightning-input>
-            <br>
-            <c-child percentage={percentage}></c-child>
+            <div style="padding:10px;">
+                <lightning-button label="Refresh" onclick={handleClick}></lightning-button>
+                <br/>
+                <c-child></c-child>
+            </div>
         </div>
     </lightning-card>
 </template>
