@@ -1,11 +1,8 @@
 <template>
-    <lightning-card title="PARENT (API Function)" icon-name="utitlity:user">
+    <lightning-card title="PARENT Listen to Custom Event" icon-name="utitlity:user">
         <div class="slds-var-m-around_medium">
-            <div style="padding:10px;">
-                <lightning-button label="Refresh" onclick={handleClick}></lightning-button>
-                <br/>
-                <c-child></c-child>
-            </div>
+            Count of clicks: {count}
+            <c-child onincrement={handleEventChange}></c-child>
         </div>
     </lightning-card>
 </template>

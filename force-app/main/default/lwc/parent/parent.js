@@ -1,7 +1,8 @@
 import { LightningElement } from 'lwc';
 
 export default class Parent extends LightningElement {
-    handleClick(){
-        this.template.querySelector('c-child').refresh();
+    count = 1;
+    handleEventChange(){
+        this.count = this.count + 1;
     }
 }
