@@ -4,7 +4,6 @@ export default class SimpleDropdown extends LightningElement {
     selectedOption = "";
 
     handleSelection(event){
-        console.log(event);
         this.selectedOption = event.detail.value;
     }
 
