@@ -1,16 +1,18 @@
 import { LightningElement } from 'lwc';
 
 export default class Scratch extends LightningElement {
-    expanded = false;
+    selectedOption = "";
 
-    handleClick() {
-        this.expanded = !this.expanded;
+    handleSelection(event){
+        this.selectedOption = event.detail.value;
     }
 
-    get isOpen(){
-        if(this.expanded){
-            return "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
-        }
-        return "slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click"
+    get options(){
+        return [
+            {label: 'Option 1', value: 1}, 
+            {label: 'Option 2', value: 2}, 
+            {label: 'Option 3', value: 3},
+            {label: 'Option 4', value: 4},
+        ]
     }
 }
