@@ -1,29 +1,25 @@
-import { LightningElement, track } from 'lwc';
+import ACCOUNT_OBJECT from "@salesforce/schema/Account";
+import { getObjectInfo } from "lightning/uiObjectInfoApi";
+import { LightningElement, api, track, wire } from "lwc";
 
 export default class Scratch extends LightningElement {
-    selectedOption = "";
-    inputText = "";
+  // Flexipage provides recordId and objectApiName
+  @api objectApiName;
+  @track objectInfo;
+  @wire(getObjectInfo, { objectApiName: ACCOUNT_OBJECT })
+  objectInfo;
 
-    @track
-    optionsArray = [
-        {label: 'Option 1', value: 'Option 1'}, 
-        {label: 'Option 2', value: 'Option 2'}, 
-        {label: 'Option 3', value: 'Option 3'},
-        {label: 'Option 4', value: 'Option 4'},
-    ];
+  connectedCallback(){
+    console.log('connected');
+  }
 
-    handleSubmit(event){
-        event.preventDefault();
-        this.inputText = this.refs.searchInput.value;
-        this.optionsArray.push({label: this.inputText, value: this.inputText});
-        this.inputText = "";
-    }
+  renderedCallback(){
+    console.log('rendered')
+  }
 
-    handleSelection(event){
-        this.selectedOption = event.detail.value;
-    }
+  get fields() {
+    console.log(this.objectInfo?.data?.fields);
+    return this.objectInfo?.data?.fields;
+  }
 
-    get options(){
-        return this.optionsArray
-    }
 }
