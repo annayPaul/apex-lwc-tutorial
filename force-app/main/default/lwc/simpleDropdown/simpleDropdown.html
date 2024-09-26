@@ -1,5 +1,11 @@
 <template>
-    <lightning-card title="Simple Dropdown">
+    <lightning-card title="Dynamic Dropdown">
+      <div class="slds-form-element">
+        <form onsubmit={handleSubmit} class="slds-form-element__label" for="form-element-01">Form Label
+            <input lwc:ref="searchInput" type="text" id="searchInput" value={inputText} placeholder="Placeholder text…" class="slds-input" />
+            <input type="submit" name="submit" />
+        </form>
+      </div>
       <div class="slds-form-element">
         <label
           class="slds-form-element__label"

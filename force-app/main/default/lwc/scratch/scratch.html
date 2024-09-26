@@ -1,5 +1,10 @@
 <template>
-    <lightning-input type="text" label="Enter..."></lightning-input>
+    <div class="slds-form-element">
+        <form onsubmit={handleSubmit} class="slds-form-element__label" for="form-element-01">Form Label
+            <input lwc:ref="searchInput" type="text" id="searchInput" value={inputText} placeholder="Placeholder text…" class="slds-input" />
+            <input type="submit" name="submit" />
+        </form>
+    </div>
     <lightning-record-picker label="Accounts" placeholder="Search Accounts..." object-api-name="Account"></lightning-record-picker>
 
     <div class="slds-form-element">
