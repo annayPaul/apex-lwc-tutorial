@@ -1,6 +1,6 @@
 import { LightningElement } from 'lwc';
 
-export default class Scratch extends LightningElement {
+export default class SimpleDropdown extends LightningElement {
     expanded = false;
 
     handleClick() {
