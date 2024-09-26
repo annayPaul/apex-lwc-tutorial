@@ -16,6 +16,7 @@ export default class SimpleDropdown extends LightningElement {
         event.preventDefault();
         this.inputText = this.refs.searchInput.value;
         this.optionsArray.push({label: this.inputText, value: this.inputText});
+        this.inputText = "";
     }
 
     handleSelection(event){
