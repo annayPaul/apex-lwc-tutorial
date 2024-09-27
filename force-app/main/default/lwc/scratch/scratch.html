@@ -1,9 +1,11 @@
 <template>
     <lightning-record-picker label="Accounts" placeholder="Search Accounts..." object-api-name="Account"></lightning-record-picker>
     <lightning-card>
-        <template lwc:if={fields}>
-            <template for:each={fields} for:item="record">
-                {record}
+        <template lwc:if={objectInfo}>
+            <template for:each={objectInfo.data} for:item="record">
+                <lightning-card key={record} variant="Narrow"> 
+                    {record}
+                </lightning-card>
             </template>
         </template>
         <template lwc:else>
