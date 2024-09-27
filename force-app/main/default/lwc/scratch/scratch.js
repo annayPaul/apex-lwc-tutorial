@@ -4,23 +4,54 @@ import { LightningElement, api, track, wire } from "lwc";
 import getFields from "@salesforce/apex/Scratch.getFields";
 
 export default class Scratch extends LightningElement {
-  // Flexipage provides recordId and objectApiName
+  @api inputObject = "Account";
+  inputText = "";
+  selectedOption = "";
+  temp = [];
+
   @api objectApiName;
   @track objectInfo;
-  @wire(getFields, {objectName: "PDF_Scanner__c"})
+  parent = this;
+  @wire(getFields, {objectName: "$inputObject"})
   objectInfo;
 
-  connectedCallback(){
-    console.log('connected');
+  @track optionsArray = [
+    {label: "None", value: "None"}
+  ]
+
+  handleSubmit(e){
+    e.preventDefault();
+    console.log('submitted....')
+    this.inputText = this.refs.searchInput.value;
+    this.optionsArray.push({label: this.inputText, value: this.inputText});
+    this.inputText = "";
   }
 
-  renderedCallback(){
-    console.log('rendered'+this.objectInfo?.data);
+  handleObjectSubmit(e){
+    e.preventDefault();
+    console.log('aaaaaaaaaaaaa.......');
+    // console.log(this.refs.objectSearch.value);
+    this.inputObject = this.refs.objectSearch.value;
+    // console.log('submit ' + this.inputObject);
+    this.temp = [];
+    for(let field of this.objectInfo?.data){
+      this.temp.push({label: field, value: field})
+    }
+    console.log('haaaa...........');
+    // console.log('temp' + thisJ.temp);
+    this.optionsArray = [{label: "None", value: "None"}, ...this.temp];
+    console.log('la la la la ...............');
+    this.inputObject = "";
   }
 
-  get fields() {
-    console.log(this.objectInfo?.data?.fields);
-    return this.objectInfo?.data?.fields;
+
+  handleSelection(event){
+    this.selectedOption = event.detail.value;
+  }
+
+
+  get options(){
+    return this.optionsArray;
   }
 
 }

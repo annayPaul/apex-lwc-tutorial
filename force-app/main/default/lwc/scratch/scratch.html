@@ -1,6 +1,32 @@
 <template>
+    <lightning-card title="Dynamic Dropdown">
+        <div class="slds-form-element">
+            <form onsubmit={handleObjectSubmit} class="slds-form-element__label" for="objectSearch">Enter an Object API name....
+                <input lwc:ref="objectSearch" type="text" id="objectSearch" value={inputObject} placeholder="Placeholder text…" class="slds-input" />
+                <input type="submit" name="submit" />
+            </form>
+        </div>
+
+        <div class="slds-form-element">
+          <form onsubmit={handleSubmit} class="slds-form-element__label" for="searchInput">Enter..
+              <input lwc:ref="searchInput" type="text" id="searchInput" value={inputText} placeholder="Placeholder text…" class="slds-input" />
+              <input type="submit" name="submit" />
+          </form>
+        </div>
+        <div class="slds-form-element">
+          <label
+            class="slds-form-element__label"
+            for="combobox-id-3"
+            id="combobox-label-id-32"
+          >
+            Relate To
+          </label>
+          <lightning-select onchange={handleSelection} value={selectedOption} options={options} class="slds-listbox slds-listbox_vertical" role="presentation">
+          </lightning-select>
+        </div>
+      </lightning-card>
     <lightning-record-picker label="Accounts" placeholder="Search Accounts..." object-api-name="Account"></lightning-record-picker>
-    <lightning-card>
+    <!-- <lightning-card>
         <template lwc:if={objectInfo}>
             <template for:each={objectInfo.data} for:item="record">
                 <lightning-card key={record} variant="Narrow"> 
@@ -11,5 +37,5 @@
         <template lwc:else>
             <h1>Loading....</h1>
         </template>
-    </lightning-card>
+    </lightning-card> -->
 </template>
