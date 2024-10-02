@@ -1,3 +1,28 @@
 <template>
-    
+    <lightning-card title="Object Fields - Dynami Dropdown">
+        <div class="slds-form-element">
+            <form onsubmit={handleObjectInputSubmit} class="slds-form-element__label" for="objectSearch">Object API: like Lead, Opportunity...
+                <input lwc:ref="objectSearch" onchange={handleObjectInputChange} type="text" id="objectSearch" value={objectInput} placeholder="Placeholder text…" class="slds-input" />
+                <input type="submit" name="submit" />
+            </form>
+        </div>
+
+        <div class="slds-form-element">
+          <form onsubmit={handleSubmit} class="slds-form-element__label" for="searchInput">Enter...
+              <input lwc:ref="searchInput" type="text" id="searchInput" value={inputText} placeholder="Placeholder text…" class="slds-input" />
+              <input type="submit" name="submit" />
+          </form>
+        </div>
+        <div class="slds-form-element">
+          <label
+            class="slds-form-element__label"
+            for="combobox-id-3"
+            id="combobox-label-id-32"
+          >
+            Fields:
+          </label>
+          <lightning-select onchange={handleSelection} value={selectedOption} options={options} class="slds-listbox slds-listbox_vertical" role="presentation">
+          </lightning-select>
+        </div>
+      </lightning-card>
 </template>
