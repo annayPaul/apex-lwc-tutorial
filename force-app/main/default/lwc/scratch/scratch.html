@@ -1,8 +1,8 @@
 <template>
     <lightning-card title="Dynamic Dropdown">
         <div class="slds-form-element">
-            <form onsubmit={handleObjectSubmit} class="slds-form-element__label" for="objectSearch">Enter an Object API name....
-                <input lwc:ref="objectSearch" type="text" id="objectSearch" value={inputObject} placeholder="Placeholder text…" class="slds-input" />
+            <form onsubmit={handleObjectInputSubmit} class="slds-form-element__label" for="objectSearch">Enter an Object API name....
+                <input lwc:ref="objectSearch" onchange={handleObjectInputChange} type="text" id="objectSearch" value={objectInput} placeholder="Placeholder text…" class="slds-input" />
                 <input type="submit" name="submit" />
             </form>
         </div>

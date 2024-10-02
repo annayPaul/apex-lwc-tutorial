@@ -4,44 +4,45 @@ import { LightningElement, api, track, wire } from "lwc";
 import getFields from "@salesforce/apex/Scratch.getFields";
 
 export default class Scratch extends LightningElement {
-  @api inputObject = "Account";
+  @api objectInput = "Account";
   inputText = "";
   selectedOption = "";
   temp = [];
 
-  @api objectApiName;
   @track objectInfo;
-  parent = this;
-  @wire(getFields, {objectName: "$inputObject"})
+
+  @wire(getFields, {objectName: "$objectInput"})
   objectInfo;
 
   @track optionsArray = [
     {label: "None", value: "None"}
   ]
 
+  handleObjectInputChange(e){
+    // Can do debouncing!
+    this.objectInput = this.refs.objectSearch.value;
+  }
+
   handleSubmit(e){
     e.preventDefault();
-    console.log('submitted....')
+
     this.inputText = this.refs.searchInput.value;
     this.optionsArray.push({label: this.inputText, value: this.inputText});
     this.inputText = "";
   }
 
-  handleObjectSubmit(e){
+  handleObjectInputSubmit(e){
     e.preventDefault();
-    console.log('aaaaaaaaaaaaa.......');
-    // console.log(this.refs.objectSearch.value);
-    this.inputObject = this.refs.objectSearch.value;
-    // console.log('submit ' + this.inputObject);
+
+    this.objectInput = this.refs.objectSearch.value;
     this.temp = [];
+
     for(let field of this.objectInfo?.data){
       this.temp.push({label: field, value: field})
     }
-    console.log('haaaa...........');
-    // console.log('temp' + thisJ.temp);
+
     this.optionsArray = [{label: "None", value: "None"}, ...this.temp];
-    console.log('la la la la ...............');
-    this.inputObject = "";
+    this.objectInput = "";
   }
 
 
