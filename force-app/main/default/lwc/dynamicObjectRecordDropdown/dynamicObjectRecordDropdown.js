@@ -1,5 +1,5 @@
 import { api, LightningElement, track, wire } from 'lwc';
-import getFields from "@salesforce/apex/Scratch.getFields";
+import getNames from "@salesforce/apex/ObjectName.getNames";
 
 export default class DynamicObjectRecordDropdown extends LightningElement {
   @api objectInput = "Account";
@@ -10,7 +10,7 @@ export default class DynamicObjectRecordDropdown extends LightningElement {
 
   @track objectInfo;
 
-  @wire(getFields, {objectName: "$objectInput"})
+  @wire(getNames, {objectName: "$objectInput"})
   objectInfo;
 
   @track optionsArray = [
