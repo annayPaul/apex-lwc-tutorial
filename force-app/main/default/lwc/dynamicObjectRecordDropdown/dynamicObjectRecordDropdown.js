@@ -4,6 +4,7 @@ import getNames from "@salesforce/apex/ObjectName.getNames";
 export default class DynamicObjectRecordDropdown extends LightningElement {
   @api objectInput = "Account";
   @api Field;
+  @api colorV = "#00FF00";
   inputText = "";
   selectedOption = "";
   temp = [];
@@ -16,6 +17,11 @@ export default class DynamicObjectRecordDropdown extends LightningElement {
   @track optionsArray = [
     {label: "None", value: "None"}
   ]
+
+  handleColorChange(event){
+    this.colorV = event.detail.value;
+    console.log(this.colorV);
+  }
 
   handleObjectInputChange(e){
     // Can do debouncing!
