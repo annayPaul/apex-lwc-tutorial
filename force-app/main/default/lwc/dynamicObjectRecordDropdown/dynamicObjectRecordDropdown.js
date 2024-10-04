@@ -20,7 +20,6 @@ export default class DynamicObjectRecordDropdown extends LightningElement {
 
   handleColorChange(event){
     this.colorV = event.detail.value;
-    console.log(this.colorV);
   }
 
   handleObjectInputChange(e){
